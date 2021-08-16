@@ -33,7 +33,7 @@
 | description          | text       | null: false                    |
 | category_id          | integer    | null: false                    |
 | product_condition_id | integer    | null: false                    |
-| Shipping_cost_id     | integer    | null: false                    |
+| shipping_cost_id     | integer    | null: false                    |
 | delivery_id          | integer    | null: false                    |
 | shipping_day_id      | integer    | null: false                    |
 | price                | integer    | null: false                    |
