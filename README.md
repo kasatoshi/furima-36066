@@ -3,44 +3,84 @@
 
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ------------------ | ------ | ----------- |
-| email              | string | null: false |
-| passward           | string | null: false |
-| name               | string | null: false |
-| profile            | text   | null: false |
-| occupation         | text   | null: false |
-| position           | text   | null: false |
+| Column             | Type   | Options                    |
+| ------------------ | ------ | -------------------------- |
+| email              | string | null: false,  unique: true |
+| encrypted_password | string | null: false                |
+| nickname           | string | null: false                |
+| last_name          | string | null: false                |
+| first_name         | string | null: false                |
+| last_name_kana     | string | null: false                |
+| first_name_kana    | string | null: false                |
+| birthday           | date   | null: false                |
 
 ### Association
 
-- has_many :prototype
-- has_many :comments
+- has_many :items
+- has_many :purchase_records
 
-## item テーブル
 
-| Column     | Type      | Options       |
-| ---------- | --------- | ------------- |
-| title      | string    | null: false   |
-| catch_copy | text      | null: false   |
-| concept    | text      | null: false   |
-| image      | user      | activestorage |
-| references | user      |               |
 
-### Association
 
-- has_many :users
-- has_many :comments
 
-## comments テーブル
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+## items テーブル
 
-| Column    | Type       | Options     |
-| --------- | ---------- | ----------- |
-| text      | text       | null: false |
-| user      | references |             |
-| prototype | references |             |
+| Column               | Type       | Options                        |
+| -------------------- | ---------- | ------------------------------ |
+| user                 | references | null: false, foreign_key: true |
+| product_name         | string     | null: false                    |
+| description          | text       | null: false                    |
+| category_id          | integer    | null: false                    |
+| product_condition_id | integer    | null: false                    |
+| shipping_cost_id     | integer    | null: false                    |
+| delivery_id          | integer    | null: false                    |
+| shipping_day_id      | integer    | null: false                    |
+| price                | integer    | null: false                    |
+
 
 ### Association
 
-- belongs_to :prototype
 - belongs_to :user
+- has_one :purchase_record
+
+
+
+
+
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+## purchase_records テーブル
+
+| Column    | Type       | Options                                   |
+| --------- | ---------- | ----------------------------------------- |
+| user      | references | null: false, foreign_key: true            |
+| item      | references | null: false, foreign_key: true            |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :shipping_address_information
+
+
+
+
+
+--------------------------------------------------------------------------
+## shipping_address_informations テーブル
+
+| Column        | Type       | Options                         |
+| ------------- | ---------- | ------------------------------- |
+| purchase      | references | null: false, foreign_key: true  |
+| postal_code   | string     | null: false                     |
+| delivery_id   | integer    | null: fales                     |
+| municipality  | string     | null: fales                     |
+| address       | string     | null: fales                     |
+| buiding_name  | string     |                                 |
+| phone_number  | string     | null: fales                     |
+
+
+### Association
+
+- belongs_to :purchase_record
