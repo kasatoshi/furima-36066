@@ -10,15 +10,14 @@
 | nickname           | string | null: false                |
 | last_name          | string | null: false                |
 | first_name         | string | null: false                |
-| last_name_Kana     | string | null: false                |
-| first_name_Kana    | string | null: false                |
+| last_name_kana     | string | null: false                |
+| first_name_kana    | string | null: false                |
 | birthday           | date   | null: false                |
 
 ### Association
 
 - has_many :items
 - has_many :purchaserecords
-- belong_to :shippingaddressinformation
 
 
 
@@ -34,9 +33,10 @@
 | description          | text       | null: false                    |
 | category_id          | integer    | null: false                    |
 | product_condition_id | integer    | null: false                    |
-| shipping_area_id     | integer    | null: false                    |
+| Shipping_cost_id     | integer    | null: false                    |
+| delivery_id          | integer    | null: false                    |
 | shipping_day_id      | integer    | null: false                    |
-| price                | string     | null: false                    |
+| price                | integer    | null: false                    |
 
 
 ### Association
@@ -73,7 +73,7 @@
 | Column        | Type       | Options                         |
 | ------------- | ---------- | ------------------------------- |
 | purchase      | references | null: false, foreign_key: true  |
-| postal_code   | references | null: false                     |
+| postal_code   | string     | null: false                     |
 | delivery_id   | integer    | null: fales                     |
 | municipality  | string     | null: fales                     |
 | address       | string     | null: fales                     |
