@@ -17,14 +17,14 @@
 ### Association
 
 - has_many :items
-- has_many :purchaserecords
+- has_many :purchase_records
 
 
 
 
 
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-## item テーブル
+## items テーブル
 
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
@@ -42,7 +42,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchaserecord
+- has_one :purchase_record
 
 
 
@@ -50,7 +50,7 @@
 
 
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-## purchaserecord テーブル
+## purchase_records テーブル
 
 | Column    | Type       | Options                                   |
 | --------- | ---------- | ----------------------------------------- |
@@ -61,14 +61,14 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shippingaddressinformation
+- has_one :shipping_address_information
 
 
 
 
 
 --------------------------------------------------------------------------
-## shippingaddressinformation テーブル
+## shipping_address_informations テーブル
 
 | Column        | Type       | Options                         |
 | ------------- | ---------- | ------------------------------- |
@@ -83,4 +83,4 @@
 
 ### Association
 
-- belongs_to :purchaserecord
+- belongs_to :purchase_record
