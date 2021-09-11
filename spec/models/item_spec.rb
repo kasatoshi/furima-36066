@@ -52,34 +52,40 @@ RSpec.describe Item, type: :model do
     end
 
     it 'カテゴリーを空白にすることはできません' do
-      @item.category_id = ""
+      @item.category_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category can't be blank")
+      expect(@item.errors.full_messages).to include("Category must be other than 1")
     end
 
     it '販売価格を空白にできない' do
       @item.price = ""
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price can't be blank")
+      expect(@item.errors.full_messages).to include("Price is invalid")
     end
 
     it "配送料のステータスが空白にならない" do
-      @item.product_condition_id = ""
+      @item.product_condition_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Product condition can't be blank")
+      expect(@item.errors.full_messages).to include("Product condition must be other than 1")
     end
 
     it "都道府県は空欄に出来ない" do
-      @item.delivery_id = ""
+      @item.delivery_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Delivery can't be blank")
+      expect(@item.errors.full_messages).to include("Delivery must be other than 1")
     end
 
     
     it "発送までの日数が空欄に出来ない" do
-      @item.shipping_day_id = ""
+      @item.shipping_day_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Shipping day can't be blank")
+      expect(@item.errors.full_messages).to include("Shipping day must be other than 1")
+    end
+
+    it '価格が300円未満では出品できない' do
+      @item.price = 299
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price is invalid")
     end
   end
 end
