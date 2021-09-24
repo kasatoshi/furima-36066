@@ -17,7 +17,7 @@
 ### Association
 
 - has_many :items
-- has_many :purchase_records
+- has_many :orders
 
 
 
@@ -42,7 +42,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchase_record
+- has_one :order
 
 
 
@@ -50,7 +50,7 @@
 
 
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-## purchase_records テーブル
+## orders テーブル
 
 | Column    | Type       | Options                                   |
 | --------- | ---------- | ----------------------------------------- |
@@ -83,4 +83,4 @@
 
 ### Association
 
-- belongs_to :purchase_record
+- belongs_to :order
